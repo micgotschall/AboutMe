@@ -1,0 +1,23 @@
+{
+  "name": "donkybones",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "less": "*",
+    "handlebars": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micgotschall/DonkyBones.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micgotschall/DonkyBones/issues"
+  },
+  "homepage": "https://github.com/micgotschall/DonkyBones#readme"
+}
