@@ -1,0 +1,1140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0049)http://www.feynmanlectures.caltech.edu/I_toc.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FLP Vol. I Table of Contents</title>
+<link href="./FLP Vol. I Table of Contents_files/screen.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./FLP Vol. I Table of Contents_files/polytexnic.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./FLP Vol. I Table of Contents_files/core.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./FLP Vol. I Table of Contents_files/custom.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./FLP Vol. I Table of Contents_files/big.css" id="big-style" media="screen" rel="alternate stylesheet" type="text/css" title="Big" disabled="">
+<link href="./FLP Vol. I Table of Contents_files/medium.css" id="medium-style" media="screen" rel="alternate stylesheet" type="text/css" title="Medium" disabled="">
+<link href="./FLP Vol. I Table of Contents_files/floating_menu.css" id="floating-menu-style" media="screen" rel="alternate stylesheet" type="text/css" title="Floating">
+<link href="./FLP Vol. I Table of Contents_files/sliding_menu.css" id="sliding-menu-style" media="screen" rel="alternate stylesheet" type="text/css" title="Sliding" disabled="">
+<link href="./FLP Vol. I Table of Contents_files/tocs.css" media="screen" rel="stylesheet" type="text/css">
+<script async="" src="./FLP Vol. I Table of Contents_files/analytics.js"></script><script src="./FLP Vol. I Table of Contents_files/jquery.min.js"></script>
+<script type="text/javascript">
+
+function store(volname){
+   var state={}
+   $(".toc-chapter").each(function(){
+      state[this.id]= $(this).find(".sections").css("display")}
+   )
+   localStorage.setItem("FLP-toc-foldstate" + volname, JSON.stringify(state));
+}
+
+function retrieve(volname){
+    var state= JSON.parse(localStorage.getItem("FLP-toc-foldstate" + volname));
+    for  (id in state){
+      $("#"+id).find(".sections").css("display",state[id])
+      $("#"+id).find(".triangle").text(state[id]=="none"?"▶":"▼")
+    }
+}
+
+var colToggle= function(){
+      $("#toc-flex-container").css("flex-direction",$("#toc-flex-container").css("flex-direction")==="column"?"row":"column")
+      $("#colswitch").text(($("#toc-flex-container").css("flex-direction")==="column"?"(Multi":"(Single")+"-column Table of Contents)")
+      
+      localStorage["FLP-toc-preference"] = $("#toc-flex-container").css("flex-direction")==="column"?"_toc_sc":"_toc";
+    
+      //fixes chrome rendering bug!
+      $(".col").each(function(){
+            $(this).toggle().toggle();
+      });
+}
+
+function colInit(){
+ 	   var tocpref;
+       
+       try { 
+ 	   		tocpref = localStorage["FLP-toc-preference"];
+ 	   }
+ 	   catch (e) { 
+ 	   		tocpref = null;
+ 	   }
+ 	   if (tocpref == null) {
+            if (window.matchMedia("(min-width: 655px)").matches)
+                tocpref = "_toc_sc";
+            else
+                tocpref = "_toc";
+           
+            localStorage["FLP-toc-preference"] = tocpref;
+       }
+
+       var colState=(tocpref=="_toc")?"column":"row";
+       $("#toc-flex-container").css("flex-direction",colState);
+       colToggle();
+}
+
+$(document).ready(function(){
+
+   var filepath = window.location.pathname;
+   var filename = filepath.substr(filepath.lastIndexOf("/")+1); 
+   var volname = filename.match(/I+/);
+
+   colInit();
+   retrieve(volname);
+   
+   $("#colswitch").click(function(){colToggle()})
+   
+   $("#expand-all").click(function(){
+      $("div.sections").show()
+      $(".triangle").text("▼")
+      store(volname)
+   })
+
+   $("#collapse-all").click(function(){
+      $("div.sections").hide()
+      $(".triangle").text("▶")
+      store(volname)
+   })
+   
+   $(".triangle").click(function(){
+      $(this).text($(this).text()==="▼"?"▶":"▼");
+      $(this).siblings("div.sections").toggle(100,
+        function()
+        {
+           store(volname)
+        }
+      );
+   })
+})
+
+</script>
+<script type="text/javascript">
+
+/* Preference Storage CLASS */
+var Preference = function(key,values,defaultvalue)
+{
+    
+    $.each(values, function(index, value) {
+        values[index] = String(value)
+    });
+    
+    this.key = key;
+    this.values = values;
+    this.defaultvalue = defaultvalue;
+};
+Preference.prototype.get = function()
+{
+    var value;
+    
+    try { value = localStorage[this.key] } catch(e) {}
+    
+    if (this.values.indexOf(value)<0)
+        value = this.defaultvalue;
+    
+    return parseInt(value);
+}
+Preference.prototype.set = function(newvalue)
+{
+    try { localStorage[this.key] = String(newvalue) } catch(e) {}
+}
+
+/* Font Style Selector */
+
+var StylePreference = new Preference("FLP-style-preference",[1,2,3],1);
+
+function changeStyle(n)
+{
+    StylePreference.set(n);
+
+    document.getElementById('medium-style').disabled=true;
+    document.getElementById('big-style').disabled=true;
+    
+    switch(n)
+    {
+        case 2:
+           document.getElementById('medium-style').disabled=false;
+           break;
+           
+        case 3:
+           document.getElementById('big-style').disabled=false;
+           break;
+    }
+}
+
+function changeStyleIndicator(n)
+{
+    document.getElementById('smallA').color="Black";
+    document.getElementById('mediumA').color="#9c0000";
+    document.getElementById('bigA').color="#9c0000";
+
+    switch(n)
+    {
+        case 2:
+           document.getElementById('smallA').color="#9c0000";
+           document.getElementById('mediumA').color="Black";
+           document.getElementById('bigA').color="#9c0000";
+           break;
+           
+        case 3:
+           document.getElementById('smallA').color="#9c0000";
+           document.getElementById('mediumA').color="#9c0000";
+           document.getElementById('bigA').color="Black";
+           break;
+    }
+}
+
+function changeStyleSafe(n)
+{
+    if (typeof MathJax == 'undefined')
+    {
+        changeStyle(n);
+        changeStyleIndicator(n);
+    }
+    else
+        MathJax.Hub.Queue(function () {
+            changeStyle(n);
+            changeStyleIndicator(n);
+            initBraces();
+        })
+}
+
+changeStyle(StylePreference.get());
+$(document).ready(function() {
+    changeStyleIndicator(StylePreference.get());
+});
+
+/* Platform Style Selector */
+
+var isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+
+var PlatformPreference = new Preference("FLP-platform-preference",[1,2], isTouchDevice ? 1:2);
+
+function setPlatform(n)
+{
+
+    document.getElementById('floating-menu-style').disabled=true;
+    document.getElementById('sliding-menu-style').disabled=true;
+
+    PlatformPreference.set(n);
+    
+    switch(n)
+    {
+        case 1:
+            isTouchDevice = true;
+            document.getElementById('sliding-menu-style').disabled=false;
+
+           break;
+           
+        case 2:
+            isTouchDevice = false;
+            document.getElementById('floating-menu-style').disabled=false;
+            break;
+    }
+}
+
+var slidingMenuOpen = false;
+function slidingMenuToggle()
+{
+    $("div.floating-menu").css( slidingMenuOpen ?
+    { 'width':'1.1em', 'transition-timing-function':'linear, step-start','-webkit-transition-timing-function':'linear, step-start' }
+      :
+    { 'width':'12em', 'transition-timing-function':'linear, step-end','-webkit-transition-timing-function':'linear, step-end' }
+    );
+
+    slidingMenuOpen = !slidingMenuOpen;
+}
+
+function setPlatformUI(n)
+{
+    PlatformPreference.set(n);
+    
+    switch(n)
+    {
+        case 1:
+            $("div.floating-menu").css({ 'width':'1.1em'});
+            $("div.floating-menu").bind('click', slidingMenuToggle);
+            
+            document.getElementById("MobileLink").src = "img/active1.png";
+            document.getElementById("DesktopLink").src = "img/desktop_off.png";
+            
+            // make links 20% bigger on mobile clients
+            $('a').not('div.floating-menu a').each(function()
+            {
+                $(this).css("font-size","120%");
+            });
+             break;
+           
+        case 2:
+            document.getElementById("MobileLink").src = "img/mobile_off.png";
+            document.getElementById("DesktopLink").src = "img/active2.png";
+
+            $("div.floating-menu").css({ 'width':'6.5em'});
+            $("div.floating-menu").unbind('click');
+            
+            // make links normal sized for desktop clients
+            $('a').not('div.floating-menu a').each(function()
+            {
+                $(this).css("font-size","100%");
+            });
+            break;
+    }
+}
+
+function changePlatformSafe(n)
+{
+    if ((isTouchDevice && n==1) || (!isTouchDevice && n==2)) return;
+
+    if (typeof MathJax == 'undefined')
+    {
+        setPlatform(n);
+        try { Popup.reregisterPopups(); } catch(e) {}
+        setPlatformUI(n);
+    }
+     else
+        MathJax.Hub.Queue(function () {
+            setPlatform(n);
+            try { Popup.reregisterPopups(); } catch(e) {}
+            setPlatformUI(n);
+        });
+}
+
+setPlatform(PlatformPreference.get());
+$(document).ready(function() {
+    setPlatformUI(PlatformPreference.get());
+
+});
+
+</script>
+<script type="text/javascript">
+
+function Goto(vol,chap,sec){
+    var volstrings =["I","II","III"];
+    var dest;
+    var chapstr = "0"+String(chap);
+    chapstr = chapstr.substr(chapstr.length-2);
+    dest = volstrings[vol-1] + "_" + chapstr + ".html"
+    if(typeof(sec)!=='undefined') {
+        dest += "#Ch" + String(chap) + "-S" + String(sec);
+    }
+    window.open(dest,'_parent');
+}
+
+</script>
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43056719-2', 'caltech.edu');
+    ga('create', 'UA-43056719-4', 'caltech.edu','inactivityTracker');
+
+    function _sendGAevent(category, action, label, value) { ga('send', 'event', category, action, label, value); }
+
+    var hidden, visibilityChange; //Visibility API compatibility
+    if (typeof document.hidden !== "undefined") {
+        hidden = "hidden";
+        visibilityChange = "visibilitychange";
+    } else if (typeof document.msHidden !== "undefined") {
+        hidden = "msHidden";
+        visibilityChange = "msvisibilitychange";
+    } else if (typeof document.webkitHidden !== "undefined") {
+        hidden = "webkitHidden";
+        visibilityChange = "webkitvisibilitychange";
+    }  //else hidden is undefined, and !document[hidden] == true
+
+    var INTERACTION_EVENTS = 'focus resize scroll mousedown mouseup mousemove wheel touchstart touchend touchmove keydown keyup';
+    var interactionHappened = false;
+    function handleInteraction()
+    {
+        $(window).off(INTERACTION_EVENTS,handleInteraction);
+        interactionHappened = true;
+    }
+
+    var visibilityChanged = false;
+    function handleVisibilityChange() //not called if there's no Visibility API
+    {
+        document.removeEventListener(visibilityChange, handleVisibilityChange, false);
+        visibilityChanged = true;
+        
+        if (!document[hidden]) handleInteraction();
+    }
+
+    var intervalsSinceLastInteraction;
+    function pageviewTimerHandler()
+    {
+        if (interactionHappened)
+        {
+            interactionHappened = false;
+            $(window).one(INTERACTION_EVENTS,handleInteraction);
+            intervalsSinceLastInteraction = 0;
+         }
+        else
+            intervalsSinceLastInteraction++;
+        
+        if ((visibilityChanged || !document[hidden]) && intervalsSinceLastInteraction < 6)
+            ga('send', 'pageview');
+        else
+            ga('inactivityTracker.send', 'pageview');
+            
+        if (visibilityChanged)
+        {
+            visibilityChanged = false;
+            document.addEventListener(visibilityChange, handleVisibilityChange, false);
+        }
+    }
+
+    if (!document[hidden])
+    {
+        intervalsSinceLastInteraction = 0;
+        ga('send', 'pageview');
+    }
+    else
+    {
+        intervalsSinceLastInteraction = 6;
+        ga('inactivityTracker.send', 'pageview');
+    }
+
+    setInterval(pageviewTimerHandler, 300000); //every 5 minutes
+    $(window).one(INTERACTION_EVENTS,handleInteraction);
+    document.addEventListener(visibilityChange, handleVisibilityChange, false);
+</script>
+</head>
+
+<body class="toc-body">
+<script language="javascript">
+
+function emailCurrentPage()
+{
+    window.open("mailto:?subject="+document.title+"&body="+"Check out the HTML edition of The Feynman Lectures on Physics, free for all to view at http://www.feynmanlectures.caltech.edu. I'm reading this chapter right now: "+escape(window.location.href)+".","_blank");
+}
+function openChapter(offset)
+{   //offest is expected to be +1 or -1, or 0 to go to the TOC
+   var lastChapter =[52,42,22]; //last chapter number of each volume
+   var volstrings =["I","II","III"];
+   var filepath = window.location.pathname;        
+   var filename = filepath.substr(filepath.lastIndexOf("/")+1); 
+   var volname = filename.match(/I+/);               
+   var vol = volname[0].length-1; //0-based volume index 
+   var chapname = filename.match(/\d+/);       
+   
+   if (chapname==null) {
+       if (offset==0) {
+          window.location.pathname = filepath.replace(filename, "index.html");
+       }
+       else {
+          var v = ((vol + offset % 3) + 3) % 3;
+          window.location.pathname = filepath.replace(filename, volstrings[v] + "_toc.html");
+       }
+   }      
+   else {
+       var chap = chapname[0];
+       var n = Number(chap)+offset;   //new chapter number
+ 
+       if (offset==0) {
+              window.location.pathname = filepath.replace(filename,volname + "_toc.html");
+       }
+       else {
+           //Note: front matter chapter numbers go from 89 to 92
+           if (n==93) n=1; else if (n==0) n=92;
+           if ((n>=1 && n<=lastChapter[vol]) || (n>=89 && n<=92)) {
+               var newChap = "0"+String(n);  //pad left with "0" in case n is a single-digit number
+               newChap = newChap.substr(newChap.length-2); //all chapter numbers have exactly 2 digits
+               window.location.assign(filepath.replace(chap,newChap));
+           }
+       }
+   }
+}
+</script>
+
+<div class="floating-menu" style="width: 6.5em;">
+	<table align="right">
+ 		<tbody><tr>
+			<td style="text-align: center; line-height:.75" colspan="3">
+			<a title="Find vendors of our publications" target="_blank" href="http://www.feynmanlectures.caltech.edu/buy.html">Buy</a>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: center" colspan="3">
+			<a title="Like this? See a problem? Let us know!" target="_blank" href="mailto:mg@feynmanlectures.info?subject=FLP-NM%20HTML%20Edition%20Comment">contact us</a>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right; vertical-align:baseline">
+			<a title="Tweet this!" target="_blank" href="http://twitter.com/home?status=Check%20out%20the%20HTML%20edition%20of%20The%20Feynman%20Lectures%20on%20Physics,%20free%20for%20all%20to%20view%20at%20http://www.feynmanlectures.caltech.edu%20and%20http://www.feynmanlectures.info.">
+			<img border="0" src="./FLP Vol. I Table of Contents_files/twitter.png"></a></td>
+			<td style="text-align: center; vertical-align:baseline">
+			<a title="Share on Facebook." target="_blank" href="http://www.facebook.com/share.php?u=http://www.feynmanlectures.caltech.edu">
+			<img border="0" src="./FLP Vol. I Table of Contents_files/facebook.png"></a></td>
+			<td style="vertical-align:baseline">
+			<a title="Email this page." href="javascript:emailCurrentPage()">
+			<img border="0" src="./FLP Vol. I Table of Contents_files/email.png"></a></td>
+		</tr>
+        <tr>
+			<td style="text-align: center" colspan="3">
+			<a title="Find out more about The Feynman Lectures at feynmanlectures.info" target="_blank" href="http://www.feynmanlectures.info/">&nbsp;&nbsp;more&nbsp;info</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; padding-bottom:0">
+            <a title="Last" href="javascript:openChapter(-1)" style="font-size:135%">◄</a>
+			</td>
+			<td style="text-align: center; padding-bottom:0">
+			<a title="Up" href="javascript:openChapter(0)" style="font-size:135%">▲</a>
+			</td>
+			<td style="text-align: left; padding-bottom:0">
+			<a title="Next" href="javascript:openChapter(+1)" style="font-size:135%">►</a>
+			</td>
+ 		</tr>
+        <tr>
+			<td style="text-align: right; vertical-align: baseline; padding-top:0">
+			<a title="Small fonts" href="javascript:changeStyleSafe(1)">
+			<font id="smallA" color="Black">A</font></a></td>
+			<td style="text-align: center; vertical-align: baseline; padding-top:0">
+			<a title="Medium fonts" href="javascript:changeStyleSafe(2)" style="font-size:140%">
+			<font id="mediumA" color="#9c0000">A</font></a></td>
+			<td style="text-align: left; vertical-align:baseline; padding-top:0">
+			<a title="Big fonts" href="javascript:changeStyleSafe(3)" style="font-size:180%">
+			<font id="bigA" color="#9c0000">A</font></a></td>
+		</tr>
+        <tr>
+			<td colspan="3" style="text-align:center; border:0; padding: 0; vertical-align:baseline; height:45px">
+			<a title="Mobile" href="javascript:changePlatformSafe(1)" style="float:left; text-align:right; padding-left:0.25em">
+			<img id="MobileLink" border="0" src="./FLP Vol. I Table of Contents_files/mobile_off.png"></a>
+       		<a title="Desktop" href="javascript:changePlatformSafe(2)" style="float:right; text-align:right; padding-right:0.25em">
+			<img id="DesktopLink" border="0" src="./FLP Vol. I Table of Contents_files/active2.png"></a>
+            </td>
+ 		</tr>
+        
+        <tr>
+			<td id="SummaryLink" colspan="3" style="display:none; text-align:center; padding: 0 0 0 0.25em">
+            <a title="Feynman&#39;s Summary of the most important points in this lecture." style="font-size:115%">SUMMARY</a>
+			</td>
+            
+		</tr>
+    </tbody></table>
+        <span id="MathJaxMessage" style="visibility:hidden; margin:0; padding:0; text-align:center;">MATHJAX</span>
+</div>
+
+<script language="javascript">
+if (typeof MathJax != 'undefined')
+{
+    var display = isTouchDevice ? 'table' : 'inherit'
+    
+    $("#MathJaxMessage").css(
+        {
+            'display' : display,
+            'visibility':'visible',
+            'animation': 'color_change 1s alternate infinite',
+            '-webkit-animation': 'color_change 1s alternate infinite',
+            '-ms-animation': 'color_change 1s alternate infinite',
+            '-o-animation': 'color_change 1s alternate infinite'
+        }
+    );
+    MathJax.Hub.Queue(function () {
+        $("#MathJaxMessage").css(
+        {
+            'display' : display,
+            'visibility':'hidden',
+            'animation': 'none',
+            '-webkit-animation': 'none',
+            '-ms-animation': 'none',
+            '-o-animation': 'none'
+        });
+    });
+    
+    $("#SummaryLink").css(
+        {
+            'display' : 'table-cell'
+        }
+    );
+    var filepath = window.location.pathname;
+    var filename = filepath.substr(filepath.lastIndexOf("/")+1);
+    var chapnum = Number(filename.match(/\d+/)[0]);
+    $("#SummaryLink a").attr('href','#Ch'+ chapnum + '-SUM')
+}
+
+</script>
+<div class="main">
+
+<div id="toc-header">
+<div id="title">The&nbsp;Feynman&nbsp;Lectures on&nbsp;Physics, Volume&nbsp;I</div>
+<div id="subtitle">mainly&nbsp;mechanics, radiation, and&nbsp;heat</div>
+<div id="authors">Feynman • Leighton • Sands</div>
+</div>
+
+<div id="toc-controls">
+<span id="colswitch">(Multi-column Table of Contents)</span>
+<span><span id="expand-all">(Expand all)</span>&nbsp;<span id="collapse-all">(Collapse all)</span></span>
+</div>
+
+<div id="toc-flex-container" style="flex-direction: column;">
+<div class="col" style="display: block;">
+<div id="frontmatter">
+<a class="chapterlink" href="javascript:Goto(1,89)" style="font-size: 100%;">About the Authors</a>
+<a class="chapterlink" href="javascript:Goto(1,90)" style="font-size: 100%;">Preface to the New Millennium Edition</a>
+<a class="chapterlink" href="javascript:Goto(1,91)" style="font-size: 100%;">Feynman's Preface</a>
+<a class="chapterlink" href="javascript:Goto(1,92)" style="font-size: 100%;">Foreword</a>
+</div>
+
+<div class="toc-chapter" id="C01">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,1)" style="font-size: 100%;"><span class="tag">Chapter 1.</span>Atoms in Motion</a>
+<div class="sections" style="display: none;">
+<a href="The Feynman Lectures on Physics Vol. I Ch. 1_ Atoms in Motion.htm" style="font-size: 100%;"><span class="tag">1-1</span>Introduction</a>
+<a href="javascript:Goto(1,1,2)" style="font-size: 100%;"><span class="tag">1-2</span>Matter is made of atoms</a>
+<a href="javascript:Goto(1,1,3)" style="font-size: 100%;"><span class="tag">1-3</span>Atomic processes</a>
+<a href="javascript:Goto(1,1,4)" style="font-size: 100%;"><span class="tag">1-4</span>Chemical reactions</a>
+</div>
+</div>
+<div class="toc-chapter" id="C02">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,2)" style="font-size: 100%;"><span class="tag">Chapter 2.</span>Basic Physics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,2,1)" style="font-size: 100%;"><span class="tag">2-1</span>Introduction</a>
+<a href="javascript:Goto(1,2,2)" style="font-size: 100%;"><span class="tag">2-2</span>Physics before 1920</a>
+<a href="javascript:Goto(1,2,3)" style="font-size: 100%;"><span class="tag">2-3</span>Quantum physics</a>
+<a href="javascript:Goto(1,2,4)" style="font-size: 100%;"><span class="tag">2-4</span>Nuclei and particles</a>
+</div>
+</div>
+<div class="toc-chapter" id="C03">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,3)" style="font-size: 100%;"><span class="tag">Chapter 3.</span>The Relation of Physics to Other Sciences</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,3,1)" style="font-size: 100%;"><span class="tag">3-1</span>Introduction</a>
+<a href="javascript:Goto(1,3,2)" style="font-size: 100%;"><span class="tag">3-2</span>Chemistry</a>
+<a href="javascript:Goto(1,3,3)" style="font-size: 100%;"><span class="tag">3-3</span>Biology</a>
+<a href="javascript:Goto(1,3,4)" style="font-size: 100%;"><span class="tag">3-4</span>Astronomy</a>
+<a href="javascript:Goto(1,3,5)" style="font-size: 100%;"><span class="tag">3-5</span>Geology</a>
+<a href="javascript:Goto(1,3,6)" style="font-size: 100%;"><span class="tag">3-6</span>Psychology</a>
+<a href="javascript:Goto(1,3,7)" style="font-size: 100%;"><span class="tag">3-7</span>How did it get that way?</a>
+</div>
+</div>
+<div class="toc-chapter" id="C04">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,4)" style="font-size: 100%;"><span class="tag">Chapter 4.</span>Conservation of Energy</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,4,1)" style="font-size: 100%;"><span class="tag">4-1</span>What is energy?</a>
+<a href="javascript:Goto(1,4,2)" style="font-size: 100%;"><span class="tag">4-2</span>Gravitational potential energy</a>
+<a href="javascript:Goto(1,4,3)" style="font-size: 100%;"><span class="tag">4-3</span>Kinetic energy</a>
+<a href="javascript:Goto(1,4,4)" style="font-size: 100%;"><span class="tag">4-4</span>Other forms of energy</a>
+</div>
+</div>
+<div class="toc-chapter" id="C05">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,5)" style="font-size: 100%;"><span class="tag">Chapter 5.</span>Time and Distance</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,5,1)" style="font-size: 100%;"><span class="tag">5-1</span>Motion</a>
+<a href="javascript:Goto(1,5,2)" style="font-size: 100%;"><span class="tag">5-2</span>Time</a>
+<a href="javascript:Goto(1,5,3)" style="font-size: 100%;"><span class="tag">5-3</span>Short times</a>
+<a href="javascript:Goto(1,5,4)" style="font-size: 100%;"><span class="tag">5-4</span>Long times</a>
+<a href="javascript:Goto(1,5,5)" style="font-size: 100%;"><span class="tag">5-5</span>Units and standards of time</a>
+<a href="javascript:Goto(1,5,6)" style="font-size: 100%;"><span class="tag">5-6</span>Large distances</a>
+<a href="javascript:Goto(1,5,7)" style="font-size: 100%;"><span class="tag">5-7</span>Short distances</a>
+</div>
+</div>
+<div class="toc-chapter" id="C06">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,6)" style="font-size: 100%;"><span class="tag">Chapter 6.</span>Probability</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,6,1)" style="font-size: 100%;"><span class="tag">6-1</span>Chance and likelihood</a>
+<a href="javascript:Goto(1,6,2)" style="font-size: 100%;"><span class="tag">6-2</span>Fluctuations</a>
+<a href="javascript:Goto(1,6,3)" style="font-size: 100%;"><span class="tag">6-3</span>The random walk</a>
+<a href="javascript:Goto(1,6,4)" style="font-size: 100%;"><span class="tag">6-4</span>A probability distribution</a>
+<a href="javascript:Goto(1,6,5)" style="font-size: 100%;"><span class="tag">6-5</span>The uncertainty principle</a>
+</div>
+</div>
+<div class="toc-chapter" id="C07">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,7)" style="font-size: 100%;"><span class="tag">Chapter 7.</span>The Theory of Gravitation</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,7,1)" style="font-size: 100%;"><span class="tag">7-1</span>Planetary motions</a>
+<a href="javascript:Goto(1,7,2)" style="font-size: 100%;"><span class="tag">7-2</span>Kepler’s laws</a>
+<a href="javascript:Goto(1,7,3)" style="font-size: 100%;"><span class="tag">7-3</span>Development of dynamics</a>
+<a href="javascript:Goto(1,7,4)" style="font-size: 100%;"><span class="tag">7-4</span>Newton’s law of gravitation</a>
+<a href="javascript:Goto(1,7,5)" style="font-size: 100%;"><span class="tag">7-5</span>Universal gravitation</a>
+<a href="javascript:Goto(1,7,6)" style="font-size: 100%;"><span class="tag">7-6</span>Cavendish’s experiment</a>
+<a href="javascript:Goto(1,7,7)" style="font-size: 100%;"><span class="tag">7-7</span>What is gravity?</a>
+<a href="javascript:Goto(1,7,8)" style="font-size: 100%;"><span class="tag">7-8</span>Gravity and relativity</a>
+</div>
+</div>
+<div class="toc-chapter" id="C08">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,8)" style="font-size: 100%;"><span class="tag">Chapter 8.</span>Motion</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,8,1)" style="font-size: 100%;"><span class="tag">8-1</span>Description of motion</a>
+<a href="javascript:Goto(1,8,2)" style="font-size: 100%;"><span class="tag">8-2</span>Speed</a>
+<a href="javascript:Goto(1,8,3)" style="font-size: 100%;"><span class="tag">8-3</span>Speed as a derivative</a>
+<a href="javascript:Goto(1,8,4)" style="font-size: 100%;"><span class="tag">8-4</span>Distance as an integral</a>
+<a href="javascript:Goto(1,8,5)" style="font-size: 100%;"><span class="tag">8-5</span>Acceleration</a>
+</div>
+</div>
+<div class="toc-chapter" id="C09">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,9)" style="font-size: 100%;"><span class="tag">Chapter 9.</span>Newton’s Laws of Dynamics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,9,1)" style="font-size: 100%;"><span class="tag">9-1</span>Momentum and force</a>
+<a href="javascript:Goto(1,9,2)" style="font-size: 100%;"><span class="tag">9-2</span>Speed and velocity</a>
+<a href="javascript:Goto(1,9,3)" style="font-size: 100%;"><span class="tag">9-3</span>Components of velocity, acceleration, and force</a>
+<a href="javascript:Goto(1,9,4)" style="font-size: 100%;"><span class="tag">9-4</span>What is the force?</a>
+<a href="javascript:Goto(1,9,5)" style="font-size: 100%;"><span class="tag">9-5</span>Meaning of the dynamical equations</a>
+<a href="javascript:Goto(1,9,6)" style="font-size: 100%;"><span class="tag">9-6</span>Numerical solution of the equations</a>
+<a href="javascript:Goto(1,9,7)" style="font-size: 100%;"><span class="tag">9-7</span>Planetary motions</a>
+</div>
+</div>
+<div class="toc-chapter" id="C10">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,10)" style="font-size: 100%;"><span class="tag">Chapter 10.</span>Conservation of Momentum</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,10,1)" style="font-size: 100%;"><span class="tag">10-1</span>Newton’s Third Law</a>
+<a href="javascript:Goto(1,10,2)" style="font-size: 100%;"><span class="tag">10-2</span>Conservation of momentum</a>
+<a href="javascript:Goto(1,10,3)" style="font-size: 100%;"><span class="tag">10-3</span>Momentum is conserved!</a>
+<a href="javascript:Goto(1,10,4)" style="font-size: 100%;"><span class="tag">10-4</span>Momentum and energy</a>
+<a href="javascript:Goto(1,10,5)" style="font-size: 100%;"><span class="tag">10-5</span>Relativistic momentum</a>
+</div>
+</div>
+<div class="toc-chapter" id="C11">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,11)" style="font-size: 100%;"><span class="tag">Chapter 11.</span>Vectors</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,11,1)" style="font-size: 100%;"><span class="tag">11-1</span>Symmetry in physics</a>
+<a href="javascript:Goto(1,11,2)" style="font-size: 100%;"><span class="tag">11-2</span>Translations</a>
+<a href="javascript:Goto(1,11,3)" style="font-size: 100%;"><span class="tag">11-3</span>Rotations</a>
+<a href="javascript:Goto(1,11,4)" style="font-size: 100%;"><span class="tag">11-4</span>Vectors</a>
+<a href="javascript:Goto(1,11,5)" style="font-size: 100%;"><span class="tag">11-5</span>Vector algebra</a>
+<a href="javascript:Goto(1,11,6)" style="font-size: 100%;"><span class="tag">11-6</span>Newton’s laws in vector notation</a>
+<a href="javascript:Goto(1,11,7)" style="font-size: 100%;"><span class="tag">11-7</span>Scalar product of vectors</a>
+</div>
+</div>
+<div class="toc-chapter" id="C12">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,12)" style="font-size: 100%;"><span class="tag">Chapter 12.</span>Characteristics of Force</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,12,1)" style="font-size: 100%;"><span class="tag">12-1</span>What is a force?</a>
+<a href="javascript:Goto(1,12,2)" style="font-size: 100%;"><span class="tag">12-2</span>Friction</a>
+<a href="javascript:Goto(1,12,3)" style="font-size: 100%;"><span class="tag">12-3</span>Molecular forces</a>
+<a href="javascript:Goto(1,12,4)" style="font-size: 100%;"><span class="tag">12-4</span>Fundamental forces. Fields</a>
+<a href="javascript:Goto(1,12,5)" style="font-size: 100%;"><span class="tag">12-5</span>Pseudo forces</a>
+<a href="javascript:Goto(1,12,6)" style="font-size: 100%;"><span class="tag">12-6</span>Nuclear forces</a>
+</div>
+</div>
+<div class="toc-chapter" id="C13">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,13)" style="font-size: 100%;"><span class="tag">Chapter 13.</span>Work and Potential Energy (A)</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,13,1)" style="font-size: 100%;"><span class="tag">13-1</span>Energy of a falling body</a>
+<a href="javascript:Goto(1,13,2)" style="font-size: 100%;"><span class="tag">13-2</span>Work done by gravity</a>
+<a href="javascript:Goto(1,13,3)" style="font-size: 100%;"><span class="tag">13-3</span>Summation of energy</a>
+<a href="javascript:Goto(1,13,4)" style="font-size: 100%;"><span class="tag">13-4</span>Gravitational field of large objects</a>
+</div>
+</div>
+<div class="toc-chapter" id="C14">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,14)" style="font-size: 100%;"><span class="tag">Chapter 14.</span>Work and Potential Energy (conclusion)</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,14,1)" style="font-size: 100%;"><span class="tag">14-1</span>Work</a>
+<a href="javascript:Goto(1,14,2)" style="font-size: 100%;"><span class="tag">14-2</span>Constrained motion</a>
+<a href="javascript:Goto(1,14,3)" style="font-size: 100%;"><span class="tag">14-3</span>Conservative forces</a>
+<a href="javascript:Goto(1,14,4)" style="font-size: 100%;"><span class="tag">14-4</span>Nonconservative forces</a>
+<a href="javascript:Goto(1,14,5)" style="font-size: 100%;"><span class="tag">14-5</span>Potentials and fields</a>
+</div>
+</div>
+<div class="toc-chapter" id="C15">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,15)" style="font-size: 100%;"><span class="tag">Chapter 15.</span>The Special Theory of Relativity</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,15,1)" style="font-size: 100%;"><span class="tag">15-1</span>The principle of relativity</a>
+<a href="javascript:Goto(1,15,2)" style="font-size: 100%;"><span class="tag">15-2</span>The Lorentz transformation</a>
+<a href="javascript:Goto(1,15,3)" style="font-size: 100%;"><span class="tag">15-3</span>The Michelson-Morley experiment</a>
+<a href="javascript:Goto(1,15,4)" style="font-size: 100%;"><span class="tag">15-4</span>Transformation of time</a>
+<a href="javascript:Goto(1,15,5)" style="font-size: 100%;"><span class="tag">15-5</span>The Lorentz contraction</a>
+<a href="javascript:Goto(1,15,6)" style="font-size: 100%;"><span class="tag">15-6</span>Simultaneity</a>
+<a href="javascript:Goto(1,15,7)" style="font-size: 100%;"><span class="tag">15-7</span>Four-vectors</a>
+<a href="javascript:Goto(1,15,8)" style="font-size: 100%;"><span class="tag">15-8</span>Relativistic dynamics</a>
+<a href="javascript:Goto(1,15,9)" style="font-size: 100%;"><span class="tag">15-9</span>Equivalence of mass and energy</a>
+</div>
+</div>
+<div class="toc-chapter" id="C16">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,16)" style="font-size: 100%;"><span class="tag">Chapter 16.</span>Relativistic Energy and Momentum</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,16,1)" style="font-size: 100%;"><span class="tag">16-1</span>Relativity and the philosophers</a>
+<a href="javascript:Goto(1,16,2)" style="font-size: 100%;"><span class="tag">16-2</span>The twin paradox</a>
+<a href="javascript:Goto(1,16,3)" style="font-size: 100%;"><span class="tag">16-3</span>Transformation of velocities</a>
+<a href="javascript:Goto(1,16,4)" style="font-size: 100%;"><span class="tag">16-4</span>Relativistic mass</a>
+<a href="javascript:Goto(1,16,5)" style="font-size: 100%;"><span class="tag">16-5</span>Relativistic energy</a>
+</div>
+</div>
+<div class="toc-chapter" id="C17">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,17)" style="font-size: 100%;"><span class="tag">Chapter 17.</span>Space-Time</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,17,1)" style="font-size: 100%;"><span class="tag">17-1</span>The geometry of space-time</a>
+<a href="javascript:Goto(1,17,2)" style="font-size: 100%;"><span class="tag">17-2</span>Space-time intervals</a>
+<a href="javascript:Goto(1,17,3)" style="font-size: 100%;"><span class="tag">17-3</span>Past, present, and future</a>
+<a href="javascript:Goto(1,17,4)" style="font-size: 100%;"><span class="tag">17-4</span>More about four-vectors</a>
+<a href="javascript:Goto(1,17,5)" style="font-size: 100%;"><span class="tag">17-5</span>Four-vector algebra</a>
+</div>
+</div>
+</div>
+<div class="col" style="display: block;">
+<div class="toc-chapter" id="C18">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,18)" style="font-size: 100%;"><span class="tag">Chapter 18.</span>Rotation in Two Dimensions</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,18,1)" style="font-size: 100%;"><span class="tag">18-1</span>The center of mass</a>
+<a href="javascript:Goto(1,18,2)" style="font-size: 100%;"><span class="tag">18-2</span>Rotation of a rigid body</a>
+<a href="javascript:Goto(1,18,3)" style="font-size: 100%;"><span class="tag">18-3</span>Angular momentum</a>
+<a href="javascript:Goto(1,18,4)" style="font-size: 100%;"><span class="tag">18-4</span>Conservation of angular momentum</a>
+</div>
+</div>
+<div class="toc-chapter" id="C19">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,19)" style="font-size: 100%;"><span class="tag">Chapter 19.</span>Center of Mass; Moment of Inertia</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,19,1)" style="font-size: 100%;"><span class="tag">19-1</span>Properties of the center of mass</a>
+<a href="javascript:Goto(1,19,2)" style="font-size: 100%;"><span class="tag">19-2</span>Locating the center of mass</a>
+<a href="javascript:Goto(1,19,3)" style="font-size: 100%;"><span class="tag">19-3</span>Finding the moment of inertia</a>
+<a href="javascript:Goto(1,19,4)" style="font-size: 100%;"><span class="tag">19-4</span>Rotational kinetic energy</a>
+</div>
+</div>
+<div class="toc-chapter" id="C20">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,20)" style="font-size: 100%;"><span class="tag">Chapter 20.</span>Rotation in space</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,20,1)" style="font-size: 100%;"><span class="tag">20-1</span>Torques in three dimensions</a>
+<a href="javascript:Goto(1,20,2)" style="font-size: 100%;"><span class="tag">20-2</span>The rotation equations using cross products</a>
+<a href="javascript:Goto(1,20,3)" style="font-size: 100%;"><span class="tag">20-3</span>The gyroscope</a>
+<a href="javascript:Goto(1,20,4)" style="font-size: 100%;"><span class="tag">20-4</span>Angular momentum of a solid body</a>
+</div>
+</div>
+<div class="toc-chapter" id="C21">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,21)" style="font-size: 100%;"><span class="tag">Chapter 21.</span>The Harmonic Oscillator</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,21,1)" style="font-size: 100%;"><span class="tag">21-1</span>Linear differential equations</a>
+<a href="javascript:Goto(1,21,2)" style="font-size: 100%;"><span class="tag">21-2</span>The harmonic oscillator</a>
+<a href="javascript:Goto(1,21,3)" style="font-size: 100%;"><span class="tag">21-3</span>Harmonic motion and circular motion</a>
+<a href="javascript:Goto(1,21,4)" style="font-size: 100%;"><span class="tag">21-4</span>Initial conditions</a>
+<a href="javascript:Goto(1,21,5)" style="font-size: 100%;"><span class="tag">21-5</span>Forced oscillations</a>
+</div>
+</div>
+<div class="toc-chapter" id="C22">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,22)" style="font-size: 100%;"><span class="tag">Chapter 22.</span>Algebra</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,22,1)" style="font-size: 100%;"><span class="tag">22-1</span>Addition and multiplication</a>
+<a href="javascript:Goto(1,22,2)" style="font-size: 100%;"><span class="tag">22-2</span>The inverse operations</a>
+<a href="javascript:Goto(1,22,3)" style="font-size: 100%;"><span class="tag">22-3</span>Abstraction and generalization</a>
+<a href="javascript:Goto(1,22,4)" style="font-size: 100%;"><span class="tag">22-4</span>Approximating irrational numbers</a>
+<a href="javascript:Goto(1,22,5)" style="font-size: 100%;"><span class="tag">22-5</span>Complex numbers</a>
+<a href="javascript:Goto(1,22,6)" style="font-size: 100%;"><span class="tag">22-6</span>Imaginary exponents</a>
+</div>
+</div>
+<div class="toc-chapter" id="C23">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,23)" style="font-size: 100%;"><span class="tag">Chapter 23.</span>Resonance</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,23,1)" style="font-size: 100%;"><span class="tag">23-1</span>Complex numbers and harmonic motion</a>
+<a href="javascript:Goto(1,23,2)" style="font-size: 100%;"><span class="tag">23-2</span>The forced oscillator with damping</a>
+<a href="javascript:Goto(1,23,3)" style="font-size: 100%;"><span class="tag">23-3</span>Electrical resonance</a>
+<a href="javascript:Goto(1,23,4)" style="font-size: 100%;"><span class="tag">23-4</span>Resonance in nature</a>
+</div>
+</div>
+<div class="toc-chapter" id="C24">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,24)" style="font-size: 100%;"><span class="tag">Chapter 24.</span>Transients</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,24,1)" style="font-size: 100%;"><span class="tag">24-1</span>The energy of an oscillator</a>
+<a href="javascript:Goto(1,24,2)" style="font-size: 100%;"><span class="tag">24-2</span>Damped oscillations</a>
+<a href="javascript:Goto(1,24,3)" style="font-size: 100%;"><span class="tag">24-3</span>Electrical transients</a>
+</div>
+</div>
+<div class="toc-chapter" id="C25">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,25)" style="font-size: 100%;"><span class="tag">Chapter 25.</span>Linear Systems and Review</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,25,1)" style="font-size: 100%;"><span class="tag">25-1</span>Linear differential equations</a>
+<a href="javascript:Goto(1,25,2)" style="font-size: 100%;"><span class="tag">25-2</span>Superposition of solutions</a>
+<a href="javascript:Goto(1,25,3)" style="font-size: 100%;"><span class="tag">25-3</span>Oscillations in linear systems</a>
+<a href="javascript:Goto(1,25,4)" style="font-size: 100%;"><span class="tag">25-4</span>Analogs in physics</a>
+<a href="javascript:Goto(1,25,5)" style="font-size: 100%;"><span class="tag">25-5</span>Series and parallel impedances</a>
+</div>
+</div>
+<div class="toc-chapter" id="C26">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,26)" style="font-size: 100%;"><span class="tag">Chapter 26.</span>Optics: The Principle of Least Time</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,26,1)" style="font-size: 100%;"><span class="tag">26-1</span>Light</a>
+<a href="javascript:Goto(1,26,2)" style="font-size: 100%;"><span class="tag">26-2</span>Reflection and refraction</a>
+<a href="javascript:Goto(1,26,3)" style="font-size: 100%;"><span class="tag">26-3</span>Fermat’s principle of least time</a>
+<a href="javascript:Goto(1,26,4)" style="font-size: 100%;"><span class="tag">26-4</span>Applications of Fermat’s principle</a>
+<a href="javascript:Goto(1,26,5)" style="font-size: 100%;"><span class="tag">26-5</span>A more precise statement of Fermat’s principle</a>
+<a href="javascript:Goto(1,26,6)" style="font-size: 100%;"><span class="tag">26-6</span>How it works</a>
+</div>
+</div>
+<div class="toc-chapter" id="C27">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,27)" style="font-size: 100%;"><span class="tag">Chapter 27.</span>Geometrical Optics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,27,1)" style="font-size: 100%;"><span class="tag">27-1</span>Introduction</a>
+<a href="javascript:Goto(1,27,2)" style="font-size: 100%;"><span class="tag">27-2</span>The focal length of a spherical surface</a>
+<a href="javascript:Goto(1,27,3)" style="font-size: 100%;"><span class="tag">27-3</span>The focal length of a lens</a>
+<a href="javascript:Goto(1,27,4)" style="font-size: 100%;"><span class="tag">27-4</span>Magnification</a>
+<a href="javascript:Goto(1,27,5)" style="font-size: 100%;"><span class="tag">27-5</span>Compound lenses</a>
+<a href="javascript:Goto(1,27,6)" style="font-size: 100%;"><span class="tag">27-6</span>Aberrations</a>
+<a href="javascript:Goto(1,27,7)" style="font-size: 100%;"><span class="tag">27-7</span>Resolving power</a>
+</div>
+</div>
+<div class="toc-chapter" id="C28">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,28)" style="font-size: 100%;"><span class="tag">Chapter 28.</span>Electromagnetic Radiation</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,28,1)" style="font-size: 100%;"><span class="tag">28-1</span>Electromagnetism</a>
+<a href="javascript:Goto(1,28,2)" style="font-size: 100%;"><span class="tag">28-2</span>Radiation</a>
+<a href="javascript:Goto(1,28,3)" style="font-size: 100%;"><span class="tag">28-3</span>The dipole radiator</a>
+<a href="javascript:Goto(1,28,4)" style="font-size: 100%;"><span class="tag">28-4</span>Interference</a>
+</div>
+</div>
+<div class="toc-chapter" id="C29">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,29)" style="font-size: 100%;"><span class="tag">Chapter 29.</span>Interference</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,29,1)" style="font-size: 100%;"><span class="tag">29-1</span>Electromagnetic waves</a>
+<a href="javascript:Goto(1,29,2)" style="font-size: 100%;"><span class="tag">29-2</span>Energy of radiation</a>
+<a href="javascript:Goto(1,29,3)" style="font-size: 100%;"><span class="tag">29-3</span>Sinusoidal waves</a>
+<a href="javascript:Goto(1,29,4)" style="font-size: 100%;"><span class="tag">29-4</span>Two dipole radiators</a>
+<a href="javascript:Goto(1,29,5)" style="font-size: 100%;"><span class="tag">29-5</span>The mathematics of interference</a>
+</div>
+</div>
+<div class="toc-chapter" id="C30">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,30)" style="font-size: 100%;"><span class="tag">Chapter 30.</span>Diffraction</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,30,1)" style="font-size: 100%;"><span class="tag">30-1</span>The resultant amplitude due to n equal oscillators</a>
+<a href="javascript:Goto(1,30,2)" style="font-size: 100%;"><span class="tag">30-2</span>The diffraction grating</a>
+<a href="javascript:Goto(1,30,3)" style="font-size: 100%;"><span class="tag">30-3</span>Resolving power of a grating</a>
+<a href="javascript:Goto(1,30,4)" style="font-size: 100%;"><span class="tag">30-4</span>The parabolic antenna</a>
+<a href="javascript:Goto(1,30,5)" style="font-size: 100%;"><span class="tag">30-5</span>Colored films; crystals</a>
+<a href="javascript:Goto(1,30,6)" style="font-size: 100%;"><span class="tag">30-6</span>Diffraction by opaque screens</a>
+<a href="javascript:Goto(1,30,7)" style="font-size: 100%;"><span class="tag">30-7</span>The field of a plane of oscillating charges</a>
+</div>
+</div>
+<div class="toc-chapter" id="C31">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,31)" style="font-size: 100%;"><span class="tag">Chapter 31.</span>The Origin of the Refractive Index</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,31,1)" style="font-size: 100%;"><span class="tag">31-1</span>The index of refraction</a>
+<a href="javascript:Goto(1,31,2)" style="font-size: 100%;"><span class="tag">31-2</span>The field due to the material</a>
+<a href="javascript:Goto(1,31,3)" style="font-size: 100%;"><span class="tag">31-3</span>Dispersion</a>
+<a href="javascript:Goto(1,31,4)" style="font-size: 100%;"><span class="tag">31-4</span>Absorption</a>
+<a href="javascript:Goto(1,31,5)" style="font-size: 100%;"><span class="tag">31-5</span>The energy carried by an electric wave</a>
+<a href="javascript:Goto(1,31,6)" style="font-size: 100%;"><span class="tag">31-6</span>Diffraction of light by a screen</a>
+</div>
+</div>
+<div class="toc-chapter" id="C32">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,32)" style="font-size: 100%;"><span class="tag">Chapter 32.</span>Radiation Damping. Light Scattering</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,32,1)" style="font-size: 100%;"><span class="tag">32-1</span>Radiation resistance</a>
+<a href="javascript:Goto(1,32,2)" style="font-size: 100%;"><span class="tag">32-2</span>The rate of radiation of energy</a>
+<a href="javascript:Goto(1,32,3)" style="font-size: 100%;"><span class="tag">32-3</span>Radiation damping</a>
+<a href="javascript:Goto(1,32,4)" style="font-size: 100%;"><span class="tag">32-4</span>Independent sources</a>
+<a href="javascript:Goto(1,32,5)" style="font-size: 100%;"><span class="tag">32-5</span>Scattering of light</a>
+</div>
+</div>
+<div class="toc-chapter" id="C33">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,33)" style="font-size: 100%;"><span class="tag">Chapter 33.</span>Polarization</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,33,1)" style="font-size: 100%;"><span class="tag">33-1</span>The electric vector of light</a>
+<a href="javascript:Goto(1,33,2)" style="font-size: 100%;"><span class="tag">33-2</span>Polarization of scattered light</a>
+<a href="javascript:Goto(1,33,3)" style="font-size: 100%;"><span class="tag">33-3</span>Birefringence</a>
+<a href="javascript:Goto(1,33,4)" style="font-size: 100%;"><span class="tag">33-4</span>Polarizers</a>
+<a href="javascript:Goto(1,33,5)" style="font-size: 100%;"><span class="tag">33-5</span>Optical activity</a>
+<a href="javascript:Goto(1,33,6)" style="font-size: 100%;"><span class="tag">33-6</span>The intensity of reflected light</a>
+<a href="javascript:Goto(1,33,7)" style="font-size: 100%;"><span class="tag">33-7</span>Anomalous refraction</a>
+</div>
+</div>
+<div class="toc-chapter" id="C34">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,34)" style="font-size: 100%;"><span class="tag">Chapter 34.</span>Relativistic Effects in Radiation</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,34,1)" style="font-size: 100%;"><span class="tag">34-1</span>Moving sources</a>
+<a href="javascript:Goto(1,34,2)" style="font-size: 100%;"><span class="tag">34-2</span>Finding the “apparent” motion</a>
+<a href="javascript:Goto(1,34,3)" style="font-size: 100%;"><span class="tag">34-3</span>Synchrotron radiation</a>
+<a href="javascript:Goto(1,34,4)" style="font-size: 100%;"><span class="tag">34-4</span>Cosmic synchrotron radiation</a>
+<a href="javascript:Goto(1,34,5)" style="font-size: 100%;"><span class="tag">34-5</span>Bremsstrahlung</a>
+<a href="javascript:Goto(1,34,6)" style="font-size: 100%;"><span class="tag">34-6</span>The Doppler effect</a>
+<a href="javascript:Goto(1,34,7)" style="font-size: 100%;"><span class="tag">34-7</span>The ω, k four-vector</a>
+<a href="javascript:Goto(1,34,8)" style="font-size: 100%;"><span class="tag">34-8</span>Aberration</a>
+<a href="javascript:Goto(1,34,9)" style="font-size: 100%;"><span class="tag">34-9</span>The momentum of light</a>
+</div>
+</div>
+<div class="toc-chapter" id="C35">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,35)" style="font-size: 100%;"><span class="tag">Chapter 35.</span>Color Vision</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,35,1)" style="font-size: 100%;"><span class="tag">35-1</span>The human eye</a>
+<a href="javascript:Goto(1,35,2)" style="font-size: 100%;"><span class="tag">35-2</span>Color depends on intensity</a>
+<a href="javascript:Goto(1,35,3)" style="font-size: 100%;"><span class="tag">35-3</span>Measuring the color sensation</a>
+<a href="javascript:Goto(1,35,4)" style="font-size: 100%;"><span class="tag">35-4</span>The chromaticity diagram</a>
+<a href="javascript:Goto(1,35,5)" style="font-size: 100%;"><span class="tag">35-5</span>The mechanism of color vision</a>
+<a href="javascript:Goto(1,35,6)" style="font-size: 100%;"><span class="tag">35-6</span>Physiochemistry of color vision</a>
+</div>
+</div>
+</div>
+<div class="col" style="display: block;">
+<div class="toc-chapter" id="C36">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,36)" style="font-size: 100%;"><span class="tag">Chapter 36.</span>Mechanisms of Seeing</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,36,1)" style="font-size: 100%;"><span class="tag">36-1</span>The sensation of color</a>
+<a href="javascript:Goto(1,36,2)" style="font-size: 100%;"><span class="tag">36-2</span>The physiology of the eye</a>
+<a href="javascript:Goto(1,36,3)" style="font-size: 100%;"><span class="tag">36-3</span>The rod cells</a>
+<a href="javascript:Goto(1,36,4)" style="font-size: 100%;"><span class="tag">36-4</span>The compound (insect) eye</a>
+<a href="javascript:Goto(1,36,5)" style="font-size: 100%;"><span class="tag">36-5</span>Other eyes</a>
+<a href="javascript:Goto(1,36,6)" style="font-size: 100%;"><span class="tag">36-6</span>Neurology of vision</a>
+</div>
+</div>
+<div class="toc-chapter" id="C37">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,37)" style="font-size: 100%;"><span class="tag">Chapter 37.</span>Quantum Behavior</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,37,1)" style="font-size: 100%;"><span class="tag">37-1</span>Atomic mechanics</a>
+<a href="javascript:Goto(1,37,2)" style="font-size: 100%;"><span class="tag">37-2</span>An experiment with bullets</a>
+<a href="javascript:Goto(1,37,3)" style="font-size: 100%;"><span class="tag">37-3</span>An experiment with waves</a>
+<a href="javascript:Goto(1,37,4)" style="font-size: 100%;"><span class="tag">37-4</span>An experiment with electrons</a>
+<a href="javascript:Goto(1,37,5)" style="font-size: 100%;"><span class="tag">37-5</span>The interference of electron waves</a>
+<a href="javascript:Goto(1,37,6)" style="font-size: 100%;"><span class="tag">37-6</span>Watching the electrons</a>
+<a href="javascript:Goto(1,37,7)" style="font-size: 100%;"><span class="tag">37-7</span>First principles of quantum mechanics</a>
+<a href="javascript:Goto(1,37,8)" style="font-size: 100%;"><span class="tag">37-8</span>The uncertainty principle</a>
+</div>
+</div>
+<div class="toc-chapter" id="C38">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,38)" style="font-size: 100%;"><span class="tag">Chapter 38.</span>The Relation of Wave and Particle Viewpoints</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,38,1)" style="font-size: 100%;"><span class="tag">38-1</span>Probability wave amplitudes</a>
+<a href="javascript:Goto(1,38,2)" style="font-size: 100%;"><span class="tag">38-2</span>Measurement of position and momentum</a>
+<a href="javascript:Goto(1,38,3)" style="font-size: 100%;"><span class="tag">38-3</span>Crystal diffraction</a>
+<a href="javascript:Goto(1,38,4)" style="font-size: 100%;"><span class="tag">38-4</span>The size of an atom</a>
+<a href="javascript:Goto(1,38,5)" style="font-size: 100%;"><span class="tag">38-5</span>Energy levels</a>
+<a href="javascript:Goto(1,38,6)" style="font-size: 100%;"><span class="tag">38-6</span>Philosophical implications</a>
+</div>
+</div>
+<div class="toc-chapter" id="C39">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,39)" style="font-size: 100%;"><span class="tag">Chapter 39.</span>The Kinetic Theory of Gases</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,39,1)" style="font-size: 100%;"><span class="tag">39-1</span>Properties of matter</a>
+<a href="javascript:Goto(1,39,2)" style="font-size: 100%;"><span class="tag">39-2</span>The pressure of a gas</a>
+<a href="javascript:Goto(1,39,3)" style="font-size: 100%;"><span class="tag">39-3</span>Compressibility of radiation</a>
+<a href="javascript:Goto(1,39,4)" style="font-size: 100%;"><span class="tag">39-4</span>Temperature and kinetic energy</a>
+<a href="javascript:Goto(1,39,5)" style="font-size: 100%;"><span class="tag">39-5</span>The ideal gas law</a>
+</div>
+</div>
+<div class="toc-chapter" id="C40">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,40)" style="font-size: 100%;"><span class="tag">Chapter 40.</span>The Principles of Statistical Mechanics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,40,1)" style="font-size: 100%;"><span class="tag">40-1</span>The exponential atmosphere</a>
+<a href="javascript:Goto(1,40,2)" style="font-size: 100%;"><span class="tag">40-2</span>The Boltzmann law</a>
+<a href="javascript:Goto(1,40,3)" style="font-size: 100%;"><span class="tag">40-3</span>Evaporation of a liquid</a>
+<a href="javascript:Goto(1,40,4)" style="font-size: 100%;"><span class="tag">40-4</span>The distribution of molecular speeds</a>
+<a href="javascript:Goto(1,40,5)" style="font-size: 100%;"><span class="tag">40-5</span>The specific heats of gases</a>
+<a href="javascript:Goto(1,40,6)" style="font-size: 100%;"><span class="tag">40-6</span>The failure of classical physics</a>
+</div>
+</div>
+<div class="toc-chapter" id="C41">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,41)" style="font-size: 100%;"><span class="tag">Chapter 41.</span>The Brownian Movement</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,41,1)" style="font-size: 100%;"><span class="tag">41-1</span>Equipartition of energy</a>
+<a href="javascript:Goto(1,41,2)" style="font-size: 100%;"><span class="tag">41-2</span>Thermal equilibrium of radiation</a>
+<a href="javascript:Goto(1,41,3)" style="font-size: 100%;"><span class="tag">41-3</span>Equipartition and the quantum oscillator</a>
+<a href="javascript:Goto(1,41,4)" style="font-size: 100%;"><span class="tag">41-4</span>The random walk</a>
+</div>
+</div>
+<div class="toc-chapter" id="C42">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,42)" style="font-size: 100%;"><span class="tag">Chapter 42.</span>Applications of Kinetic Theory</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,42,1)" style="font-size: 100%;"><span class="tag">42-1</span>Evaporation</a>
+<a href="javascript:Goto(1,42,2)" style="font-size: 100%;"><span class="tag">42-2</span>Thermionic emission</a>
+<a href="javascript:Goto(1,42,3)" style="font-size: 100%;"><span class="tag">42-3</span>Thermal ionization</a>
+<a href="javascript:Goto(1,42,4)" style="font-size: 100%;"><span class="tag">42-4</span>Chemical kinetics</a>
+<a href="javascript:Goto(1,42,5)" style="font-size: 100%;"><span class="tag">42-5</span>Einstein’s laws of radiation</a>
+</div>
+</div>
+<div class="toc-chapter" id="C43">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,43)" style="font-size: 100%;"><span class="tag">Chapter 43.</span>Diffusion</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,43,1)" style="font-size: 100%;"><span class="tag">43-1</span>Collisions between molecules</a>
+<a href="javascript:Goto(1,43,2)" style="font-size: 100%;"><span class="tag">43-2</span>The mean free path</a>
+<a href="javascript:Goto(1,43,3)" style="font-size: 100%;"><span class="tag">43-3</span>The drift speed</a>
+<a href="javascript:Goto(1,43,4)" style="font-size: 100%;"><span class="tag">43-4</span>Ionic conductivity</a>
+<a href="javascript:Goto(1,43,5)" style="font-size: 100%;"><span class="tag">43-5</span>Molecular diffusion</a>
+<a href="javascript:Goto(1,43,6)" style="font-size: 100%;"><span class="tag">43-6</span>Thermal conductivity</a>
+</div>
+</div>
+<div class="toc-chapter" id="C44">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,44)" style="font-size: 100%;"><span class="tag">Chapter 44.</span>The Laws of Thermodynamics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,44,1)" style="font-size: 100%;"><span class="tag">44-1</span>Heat engines; the first law</a>
+<a href="javascript:Goto(1,44,2)" style="font-size: 100%;"><span class="tag">44-2</span>The second law</a>
+<a href="javascript:Goto(1,44,3)" style="font-size: 100%;"><span class="tag">44-3</span>Reversible engines</a>
+<a href="javascript:Goto(1,44,4)" style="font-size: 100%;"><span class="tag">44-4</span>The efficiency of an ideal engine</a>
+<a href="javascript:Goto(1,44,5)" style="font-size: 100%;"><span class="tag">44-5</span>The thermodynamic temperature</a>
+<a href="javascript:Goto(1,44,6)" style="font-size: 100%;"><span class="tag">44-6</span>Entropy</a>
+</div>
+</div>
+<div class="toc-chapter" id="C45">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,45)" style="font-size: 100%;"><span class="tag">Chapter 45.</span>Illustrations of Thermodynamics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,45,1)" style="font-size: 100%;"><span class="tag">45-1</span>Internal energy</a>
+<a href="javascript:Goto(1,45,2)" style="font-size: 100%;"><span class="tag">45-2</span>Applications</a>
+<a href="javascript:Goto(1,45,3)" style="font-size: 100%;"><span class="tag">45-3</span>The Clausius-Clapeyron equation</a>
+</div>
+</div>
+<div class="toc-chapter" id="C46">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,46)" style="font-size: 100%;"><span class="tag">Chapter 46.</span>Ratchet and pawl</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,46,1)" style="font-size: 100%;"><span class="tag">46-1</span>How a ratchet works</a>
+<a href="javascript:Goto(1,46,2)" style="font-size: 100%;"><span class="tag">46-2</span>The ratchet as an engine</a>
+<a href="javascript:Goto(1,46,3)" style="font-size: 100%;"><span class="tag">46-3</span>Reversibility in mechanics</a>
+<a href="javascript:Goto(1,46,4)" style="font-size: 100%;"><span class="tag">46-4</span>Irreversibility</a>
+<a href="javascript:Goto(1,46,5)" style="font-size: 100%;"><span class="tag">46-5</span>Order and entropy</a>
+</div>
+</div>
+<div class="toc-chapter" id="C47">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,47)" style="font-size: 100%;"><span class="tag">Chapter 47.</span>Sound. The wave equation</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,47,1)" style="font-size: 100%;"><span class="tag">47-1</span>Waves</a>
+<a href="javascript:Goto(1,47,2)" style="font-size: 100%;"><span class="tag">47-2</span>The propagation of sound</a>
+<a href="javascript:Goto(1,47,3)" style="font-size: 100%;"><span class="tag">47-3</span>The wave equation</a>
+<a href="javascript:Goto(1,47,4)" style="font-size: 100%;"><span class="tag">47-4</span>Solutions of the wave equation</a>
+<a href="javascript:Goto(1,47,5)" style="font-size: 100%;"><span class="tag">47-5</span>The speed of sound</a>
+</div>
+</div>
+<div class="toc-chapter" id="C48">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,48)" style="font-size: 100%;"><span class="tag">Chapter 48.</span>Beats</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,48,1)" style="font-size: 100%;"><span class="tag">48-1</span>Adding two waves</a>
+<a href="javascript:Goto(1,48,2)" style="font-size: 100%;"><span class="tag">48-2</span>Beat notes and modulation</a>
+<a href="javascript:Goto(1,48,3)" style="font-size: 100%;"><span class="tag">48-3</span>Side bands</a>
+<a href="javascript:Goto(1,48,4)" style="font-size: 100%;"><span class="tag">48-4</span>Localized wave trains</a>
+<a href="javascript:Goto(1,48,5)" style="font-size: 100%;"><span class="tag">48-5</span>Probability amplitudes for particles</a>
+<a href="javascript:Goto(1,48,6)" style="font-size: 100%;"><span class="tag">48-6</span>Waves in three dimensions</a>
+<a href="javascript:Goto(1,48,7)" style="font-size: 100%;"><span class="tag">48-7</span>Normal modes</a>
+</div>
+</div>
+<div class="toc-chapter" id="C49">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,49)" style="font-size: 100%;"><span class="tag">Chapter 49.</span>Modes</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,49,1)" style="font-size: 100%;"><span class="tag">49-1</span>The reflection of waves</a>
+<a href="javascript:Goto(1,49,2)" style="font-size: 100%;"><span class="tag">49-2</span>Confined waves, with natural frequencies</a>
+<a href="javascript:Goto(1,49,3)" style="font-size: 100%;"><span class="tag">49-3</span>Modes in two dimensions</a>
+<a href="javascript:Goto(1,49,4)" style="font-size: 100%;"><span class="tag">49-4</span>Coupled pendulums</a>
+<a href="javascript:Goto(1,49,5)" style="font-size: 100%;"><span class="tag">49-5</span>Linear systems</a>
+</div>
+</div>
+<div class="toc-chapter" id="C50">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,50)" style="font-size: 100%;"><span class="tag">Chapter 50.</span>Harmonics</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,50,1)" style="font-size: 100%;"><span class="tag">50-1</span>Musical tones</a>
+<a href="javascript:Goto(1,50,2)" style="font-size: 100%;"><span class="tag">50-2</span>The Fourier series</a>
+<a href="javascript:Goto(1,50,3)" style="font-size: 100%;"><span class="tag">50-3</span>Quality and consonance</a>
+<a href="javascript:Goto(1,50,4)" style="font-size: 100%;"><span class="tag">50-4</span>The Fourier coefficients</a>
+<a href="javascript:Goto(1,50,5)" style="font-size: 100%;"><span class="tag">50-5</span>The energy theorem</a>
+<a href="javascript:Goto(1,50,6)" style="font-size: 100%;"><span class="tag">50-6</span>Nonlinear responses</a>
+</div>
+</div>
+<div class="toc-chapter" id="C51">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,51)" style="font-size: 100%;"><span class="tag">Chapter 51.</span>Waves</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,51,1)" style="font-size: 100%;"><span class="tag">51-1</span>Bow waves</a>
+<a href="javascript:Goto(1,51,2)" style="font-size: 100%;"><span class="tag">51-2</span>Shock waves</a>
+<a href="javascript:Goto(1,51,3)" style="font-size: 100%;"><span class="tag">51-3</span>Waves in solids</a>
+<a href="javascript:Goto(1,51,4)" style="font-size: 100%;"><span class="tag">51-4</span>Surface waves</a>
+</div>
+</div>
+<div class="toc-chapter" id="C52">
+<span class="triangle">▶</span><a class="chapterlink" href="javascript:Goto(1,52)" style="font-size: 100%;"><span class="tag">Chapter 52.</span>Symmetry in Physical Laws</a>
+<div class="sections" style="display: none;">
+<a href="javascript:Goto(1,52,1)" style="font-size: 100%;"><span class="tag">52-1</span>Symmetry operations</a>
+<a href="javascript:Goto(1,52,2)" style="font-size: 100%;"><span class="tag">52-2</span>Symmetry in space and time</a>
+<a href="javascript:Goto(1,52,3)" style="font-size: 100%;"><span class="tag">52-3</span>Symmetry and conservation laws</a>
+<a href="javascript:Goto(1,52,4)" style="font-size: 100%;"><span class="tag">52-4</span>Mirror reflections</a>
+<a href="javascript:Goto(1,52,5)" style="font-size: 100%;"><span class="tag">52-5</span>Polar and axial vectors</a>
+<a href="javascript:Goto(1,52,6)" style="font-size: 100%;"><span class="tag">52-6</span>Which hand is right?</a>
+<a href="javascript:Goto(1,52,7)" style="font-size: 100%;"><span class="tag">52-7</span>Parity is not conserved!</a>
+<a href="javascript:Goto(1,52,8)" style="font-size: 100%;"><span class="tag">52-8</span>Antimatter</a>
+<a href="javascript:Goto(1,52,9)" style="font-size: 100%;"><span class="tag">52-9</span>Broken symmetries</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a id="copyright" href="http://www.feynmanlectures.caltech.edu/I_copyright.html" style="font-size: 100%;">Copyright © 1963, 2006, 2013 by the California Institute of Technology, <br>
+ Michael A. Gottlieb, and Rudolf Pfeiffer</a>
+<div id="credits">
+Persistant Folding Table of Contents by Lars Næsheim, with assistance from Michael Gottlieb.
+</div>
+
+
+
+</body></html>
