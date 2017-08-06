@@ -68,7 +68,6 @@ body {
   text-align: center;
 }
 
-
 /*Puts background color when hovering over bar buttons*/
 
 a:hover {
@@ -79,11 +78,16 @@ a:hover {
   background-color: white;
   padding: 64 16;
 }
-.experience table {
+table {
+  background-color: white;
   width: 100%;
 }
 
-.experience td {
+table .left {
+  padding-left: 5em;
+}
+
+td {
   padding-top: 16px;
   width: 50%;
 }
@@ -94,15 +98,38 @@ a:hover {
   z-index: 999;
   position: relative;
 }
+
 .education {
+  padding: 64 16;
+  background-color: white;
+  display: grid;
+}
+
+.education caption {
+  text-align: left;
+  font-weight: bold;
+}
+
+.education h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.education h4 {
+  margin-top: 0;
+  font-weight: 400;
+}
+
+.education-title {
   color: white;
   font-weight: bold;
   font-size: 4rem;
-  top: 125%;
+  top: 175%;
   left: 35%;
   padding: 3px 24px;
   z-index: 999;
 }
+
 .font {
   font-family: 'Raleway', serif;
 }
