@@ -1,135 +1,169 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body {
-  background-color: #1E1E1E;
-  margin: 0;
-  width: 100%;
-  overflow-x: hidden;
+    background-color: #1E1E1E;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .top {
-  z-index: 999;
+    z-index: 999;
 }
 
 .bar {
-  top: 0;
-  width: 100%;
-  position: fixed;
-  z-index: 999;
+    background-color: rgba(60, 60, 60, 0.5);
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
 }
 
 .bar-item {
-  z-index: 999;
-  width: 100%;
-  font-size: 15px;
-  color: white;
-  padding: 13px 16px;
-  text-decoration: none;
-  vertical-align: middle;
-  line-height: 3;
+    z-index: 999;
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    padding: 13px 16px;
+    text-decoration: none;
+    vertical-align: middle;
+    line-height: 3;
 }
 
 .bgimg-1 {
-  background-image: url('images/coffee_mac.jpg');
-  min-height: 100%;
-  max-width: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(5px);
+    background-image: url('images/coffee_mac.jpg');
+    min-height: 100%;
+    max-width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*filter: blur(5px);*/
 }
+
+.blur {
+    filter: blur(5px);
+}
+
+.grayscale {
+    filter: grayscale(50%);
+}
+
+.bgimg-2 {
+    background-image: url('images/handshake.jpg');
+    min-height: 25em;
+    max-width: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);*/
+    /*filter: blur(5px);*/
+}
+
 .bgimg-3 {
-  background-image: url('images/csulb.jpg');
-  min-height: 400px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(3px);
+    background-image: url('images/csulb.jpg');
+    min-height: 25em;
+    max-width: 100%;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*opacity: 0.5;
+    filter: blur(3px);*/
 }
 
 .welcome {
-  font-size: 3rem;
-  color: black;
-  padding: 3px 24px;
+    font-size: 3rem;
+    color: black;
+    padding: 3px 24px;
 }
 
 .home {
-  top: 40%;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.35);
+    top: 40%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.35);
 }
+
+.relative {
+    position: relative;
+}
+
 .absolute {
-  position: absolute;
+    position: absolute;
 }
 
 .center {
-  /*z-index: 999;*/
-  text-align: center;
+    /*z-index: 999;*/
+    text-align: center;
 }
+
 
 /*Puts background color when hovering over bar buttons*/
 
 a:hover {
-  background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.35);
 }
 
 .experience {
-  background-color: white;
-  padding: 64 16;
+    background-color: white;
+    padding: 64 16;
 }
+
 table {
-  background-color: white;
-  width: 100%;
+    background-color: white;
+    width: 100%;
 }
 
 table .left {
-  padding-left: 5em;
+    padding-left: 5em;
 }
 
 td {
-  padding-top: 16px;
-  width: 50%;
+    padding-top: 16px;
+    width: 50%;
 }
+
 .projects {
-  background-color: white;
-  top: 92.5vh;
-  text-align: center;
-  z-index: 999;
-  position: relative;
+    background-color: white;
+    top: 92.5vh;
+    text-align: center;
+    z-index: 999;
+    position: relative;
 }
 
 .education {
-  padding: 64 16;
-  background-color: white;
-  display: grid;
+    padding: 64 16;
+    background-color: white;
+    display: grid;
 }
 
 .education caption {
-  text-align: left;
-  font-weight: bold;
+    text-align: left;
+    font-weight: bold;
 }
 
 .education h3 {
-  margin: 0;
-  font-weight: 400;
+    margin: 0;
+    font-weight: 400;
 }
 
 .education h4 {
-  margin-top: 0;
-  font-weight: 400;
+    margin-top: 0;
+    font-weight: 400;
 }
 
 .education-title {
-  color: white;
-  font-weight: bold;
-  font-size: 4rem;
-  top: 175%;
-  left: 35%;
-  padding: 3px 24px;
-  z-index: 999;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    font-weight: bold;
+    font-size: 4rem;
+    top: 50%;
+    left: 35%;
+    padding: 3px 24px;
+    z-index: 999;
 }
 
 .font {
-  font-family: 'Raleway', serif;
+    font-family: 'Raleway', serif;
 }
