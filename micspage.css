@@ -49,7 +49,7 @@ body {
 }
 
 .bgimg-2 {
-    background-image: url('images/handshake.jpg');
+    background-image: url('images/background-projects.jpg');
     min-height: 25em;
     max-width: 100%;
     background-attachment: fixed;
@@ -120,16 +120,15 @@ table .left {
 }
 
 td {
-    padding-top: 16px;
+    padding-top: 2em;
+    padding-right: 1em;
     width: 50%;
 }
 
 .projects {
     background-color: white;
-    top: 92.5vh;
-    text-align: center;
-    z-index: 999;
-    position: relative;
+    padding-top: 64;
+    padding-bottom: 64;
 }
 
 .education {
@@ -154,14 +153,17 @@ td {
 }
 
 .education-title {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     font-weight: bold;
     font-size: 4rem;
-    top: 50%;
-    left: 35%;
-    padding: 3px 24px;
-    z-index: 999;
+    top: 40%;
+    /*left: 35%;*/
+    /*display: table;*/
+    width: 100%;
+    /*margin: 0 auto;*/
+    /*padding: 0.1em .4em;*/
+    /*z-index: 999;*/
 }
 
 .font {
