@@ -18,6 +18,22 @@ p{
 
 }
 
+.pagetop{
+  padding: 3px;
+  background-color: #eeeeee;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.myname {
+  font-size: 25pt;
+  padding: 20px;
+  padding-left: 140px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
 .blue {
   color: blue;
   background-color: orange;
@@ -80,8 +96,6 @@ a:hover{ /* on hover
 #nav {
 /*  background-image: url(https://ironcatscattery.com/websiteimage/Szalagok/Szalagok%200076.png); */
 /*  background-image: url('../images/spaceBanner.jpg'); */
-  min-width:580px;
-  max-width:580px;
   background-color: black;
   height: 40px;
   font-size: 25px;
@@ -126,28 +140,9 @@ a:hover{ /* on hover
   /* float: left;  Allows text to sort of hug the image */
   /* margin-right: 10px; */
 }
-
 .imagetop { /* made by me, hopefully works better */
   float: left;  /* Allows text to sort of hug the image */
   margin-right: 10px;
-}
-
-.pagetop{
-  min-width:1000px;
-  padding: 3px;
-  background-color: #ffffff;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-}
-
-.myname {
-  font-size: 25pt;
-  padding: 20px;
-  padding-left: 140px;
-  padding-bottom: 10px;
-  padding-top: 20px;
-  font-weight: bold;
 }
 
 /* These psudo-classes determine how links change color */
