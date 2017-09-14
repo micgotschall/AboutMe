@@ -10,6 +10,10 @@ body {
     z-index: 999;
 }
 
+.top-pad {
+    padding-top: 1em;
+}
+
 .bar {
     background-color: rgba(60, 60, 60, 0.5);
     top: 0;
@@ -66,7 +70,7 @@ body {
     min-height: 25em;
     max-width: 100%;
     background-attachment: fixed;
-    background-position: top;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     /*opacity: 0.5;
