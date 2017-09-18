@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "less": "*",
-    "handlebars": "*"
+    "handlebars": "*",
+    "jquery": "^3.2.1",
+    "less": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

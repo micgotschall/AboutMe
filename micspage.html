@@ -5,10 +5,12 @@
   <div class="top">
     <div class="bar font" id="myNavbar">
       <a href="#home" class="bar-item">HOME</a>
-      <a href="#experience" class="bar-item">EXPERIENCE</a>
-      <a href="#projects" class="bar-item">PROJECTS</a>
-      <a href="#education" class="bar-item">EDUCATION</a>
-      <a href="#contact" class="bar-item">CONTACT</a>
+      <a href="#experience" class="big-only bar-item">EXPERIENCE</a>
+      <a href="#projects" class="big-only bar-item">PROJECTS</a>
+      <a href="#education" class="big-only bar-item">EDUCATION</a>
+      <!-- to be added in -->
+      <!-- <a href="#contact" class="big-only bar-item">CONTACT</a> -->
+      <a href="javascript:void(0);" class="bar-item icon" onclick="clicked()">&#9776;</a>
     </div>
   </div>
   <div class="bgimg-1 relative" id="home">
@@ -23,16 +25,16 @@
         <tr>
           <td class="left" valign="top">2017</td>
           <td>Web Development Summer Internship
-            <br><a href="https://www.panosoft.com">Panoramic Software</a>, Irvine California
-            <br>• Built custom reports using JavaScript, HTML, and CSS
+            <br><a href="https://www.panosoft.com">Panoramic Software</a> Irvine, California
+            <br>• Retrieved data from a database to built custom reports using JavaScript, SQL, HTML, and CSS
             <br>• Used frameworks to help in report building such as Node, Handlebars, and Less
             <br>• Used open source software in development of reports such as Chronicle and Prince</td>
         </tr>
         <tr>
           <td class="left" valign="top">2015-2016</td>
           <td>Customer Service Representative
-            <br>Lowe's Companies Inc., Huntington Beach California
-            <br>• Provide excellent customer service using Lowe’s customer service policy</td>
+            <br>Lowe's Companies Inc. Huntington Beach, California
+            <br>• Provide excellent customer service using Lowe's customer service policy</td>
         </tr>
       </tbody>
     </table>
@@ -84,10 +86,8 @@
     </table>
   </div>
   <div class="bgimg-3 relative" id="education">
-    <!-- <div class="absolute center education-title font">EDUCATION</div> -->
   </div>
   <div class="education font">
-    <!-- <h1 class="center">EDUCATION</h1> -->
     <h2 class="center">CALIFORNIA STATE UNIVERSITY OF LONG BEACH</h2>
     <h3 class="center">CANDIDATE FOR BACHELOR OF SCIENCE, COMPUTER SCIENCE</h3>
     <h4 class="center">MINOR IN APPLIED MATHEMATICS</h4>
@@ -113,8 +113,10 @@
       </tbody>
     </table>
   </div>
-
-  <div id="contact">
+<!-- to be added in -->
+  <!-- <div id="contact">
       <h1>Contact Me</h1>
-  </div>
+  </div> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="micspage.js"></script>
 </body>

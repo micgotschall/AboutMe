@@ -6,8 +6,35 @@ body {
     overflow-x: hidden;
 }
 
-.top {
-    z-index: 999;
+.bar-item {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 13px 16px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.icon {
+    display: none;
+    float: right;
+}
+
+.responsive {
+    position: relative;
+}
+
+.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
 }
 
 .top-pad {
@@ -22,17 +49,6 @@ body {
     z-index: 999;
 }
 
-.bar-item {
-    z-index: 999;
-    width: 100%;
-    font-size: 15px;
-    color: white;
-    padding: 13px 16px;
-    text-decoration: none;
-    vertical-align: middle;
-    line-height: 3;
-}
-
 .bgimg-1 {
     background-image: url('images/coffee_mac.jpg');
     min-height: 100%;
@@ -41,15 +57,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*filter: blur(5px);*/
-}
-
-.blur {
-    filter: blur(5px);
-}
-
-.grayscale {
-    filter: grayscale(50%);
 }
 
 .bgimg-2 {
@@ -60,9 +67,6 @@ body {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    /*filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);*/
-    /*filter: blur(5px);*/
 }
 
 .bgimg-3 {
@@ -73,8 +77,6 @@ body {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    /*opacity: 0.5;
-    filter: blur(3px);*/
 }
 
 .welcome {
@@ -98,7 +100,6 @@ body {
 }
 
 .center {
-    /*z-index: 999;*/
     text-align: center;
 }
 
@@ -162,12 +163,7 @@ td {
     font-weight: bold;
     font-size: 4rem;
     top: 40%;
-    /*left: 35%;*/
-    /*display: table;*/
     width: 100%;
-    /*margin: 0 auto;*/
-    /*padding: 0.1em .4em;*/
-    /*z-index: 999;*/
 }
 
 .font {
