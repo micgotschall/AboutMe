@@ -6,6 +6,8 @@ body {
  margin-bottom: 60px;
  background-size:100%;
  background-repeat:repeat-y;
+ /* Prevents you from seeing x scroll bars */
+ overflow-x:hidden;
 }
 
 h1 {
@@ -32,7 +34,7 @@ p{
 }
 
 .borderText{  /* content > padding > border > margin */
-  background-color: #FFD3B7;
+  background-color: #B26FFF;
   /* Padding */
   padding: 10px;
   padding-left: 20px;
@@ -87,7 +89,7 @@ a:hover{ /* on hover
   font-size: 25px;
   font-weight: bold;
   font: Tahoma;
-  margin-left: 120px;
+  /* margin-left: 120px; */
 }
 #nav ul { /* this undoes the default stuff */
   display: inline-block;
@@ -113,6 +115,31 @@ a:hover{ /* on hover
   background: white;
 }
 
+.imagetop { /* made by me, hopefully works better */
+  float: left;  /* Allows text to sort of hug the image */
+  margin-right: 10px;
+}
+
+.pagetop{
+  min-width:1000px;
+  padding: 0px;
+  background-color: #ffffff;
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+  background-image: url( "../images/tile.png" );
+}
+
+.myname {
+  font-size: 25pt;
+  padding: 20px;
+  padding-left: 110px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  font-family: "Trebuchet MS", Times, serif,oblique;
+}
+
 /* Automatically adds a little border to added images */
 .imagec {
   display: block;
@@ -127,27 +154,13 @@ a:hover{ /* on hover
   /* margin-right: 10px; */
 }
 
-.imagetop { /* made by me, hopefully works better */
-  float: left;  /* Allows text to sort of hug the image */
-  margin-right: 10px;
-}
-
-.pagetop{
+.pagemid{
   min-width:1000px;
-  padding: 3px;
+  padding: 5px;
   background-color: #ffffff;
   border-color: black;
-  border-width: 2px;
+  border-width: 5px;
   border-style: solid;
-}
-
-.myname {
-  font-size: 25pt;
-  padding: 20px;
-  padding-left: 140px;
-  padding-bottom: 10px;
-  padding-top: 20px;
-  font-weight: bold;
 }
 
 /* These psudo-classes determine how links change color */
@@ -233,3 +246,38 @@ details details {
 details details summary {
 	font-size: 16px;
 }
+
+canvas{
+    border: 5px solid black;
+}
+
+/* THIS CODE CHUNK CREATES THE UNBALANCED COLUMNS THAT MAKE UP THE PAGE */
+* {
+    box-sizing: border-box;
+}
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    /* height: 300px; /* Should be removed. Only for demonstration */ */
+    border-top-style: solid;
+}
+.left {
+  width: 85%;
+  background-color: white;
+  border-bottom-style: solid;
+}
+.right {
+  width: 15%;
+  background-color: whiteSmoke;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* THIS CODE CHUNK CREATES THE UNBALANCED COLUMNS THAT MAKE UP THE PAGE */
