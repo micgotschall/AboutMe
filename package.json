@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "handlebars": "*",
     "jquery": "^3.2.1",
     "less": "*"

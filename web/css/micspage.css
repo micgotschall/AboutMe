@@ -50,7 +50,7 @@ body {
 }
 
 .bgimg-1 {
-    background-image: url('images/coffee_mac.jpg');
+    background-image: url('../../images/coffee_mac.jpg');
     min-height: 100%;
     max-width: 100%;
     background-attachment: fixed;
@@ -60,7 +60,7 @@ body {
 }
 
 .bgimg-2 {
-    background-image: url('images/background-projects.jpg');
+    background-image: url('../../images/background-projects.jpg');
     min-height: 25em;
     max-width: 100%;
     background-attachment: fixed;
@@ -70,7 +70,7 @@ body {
 }
 
 .bgimg-3 {
-    background-image: url('images/csulb.jpg');
+    background-image: url('../../images/csulb.jpg');
     min-height: 25em;
     max-width: 100%;
     background-attachment: fixed;
