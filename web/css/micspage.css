@@ -6,6 +6,11 @@ body {
     overflow-x: hidden;
 }
 
+.no-space {
+    padding: 0;
+    margin: 0;
+}
+
 .bar-item {
     float: left;
     display: block;
@@ -89,6 +94,12 @@ body {
     top: 40%;
     width: 100%;
     background: rgba(255, 255, 255, 0.35);
+}
+
+.middle-strip {
+    top: 40%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .relative {
