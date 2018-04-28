@@ -1,20 +1,26 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/myStyle.css">   <!--  allows use of css stylesheet  -->
-    <title>Sup</title>  <!-- title of page in the tab -->
+    <link rel="shortcut icon" href="./images/goldAperture.png">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Kanit|Press+Start+2P|Hind+Vadodara" rel="stylesheet">
+    <title>A.D.N</title>  <!-- title of page in the tab -->
 </head>
 <body>
 
   <!--**_____ THIS IS THE START OF THE HEADER _____**-->
   <div class="pagetop">
-    <div class="myname"> Alexandr D Newberry </div>
-
+    <img src="./images/goldRod.png" alt="goldenRod" width=100% height="5">
     <div id="nav">
-      <li> <a href="a_home.htm"> <font color="red"> Home </font> </a> </li>
-      <li><a href="a_projects.htm">Projects</a></li>
-      <li><a href="a_book.htm">Book</a></li>
-      <li><a href="a_resources.htm">Resources</a></li>
+      <ul>
+        <li><b> A.D.N </b></li>
+        <li> <a class="active" href="a_home.htm"> Home </a> </li>
+        <li><a href="a_projects.htm"> Projects </a></li>
+        <li><a href="a_book.htm">Book</a></li>
+        <li><a href="a_resources.htm">Resources</a></li>
+        <li><b> A.D.N </b></li>
+      </ul>
     </div>
+    <img src="./images/goldRod.png" alt="Girl in a jacket" width=100% height="5">
 
   </div> <!-- End pagetop-->
   <!--_____ THIS IS THE END OF THE HEADER _____-->
@@ -23,31 +29,34 @@
 <div class="pagemid">
 
 
-  <div class="row">
-    <div class="column left">
+  <h2> About the Site </h2>
+  <p> This site has physics resources and machine learning resources for anyone trying to learn them. Also if you're
+  bored look at some of my personal projects I've worked on including some games I coded while learning javascript
+  and some art I've created.</p>
 
-      <h2> About the Site </h2>
-      <p> This site has physics resources and machine learning resources for anyone trying to learn them. Also if you're
-      bored look at some of my personal projects I've worked on including some games I coded while learning javascript
-      and some art I've created.</p>
+  <br>
 
+  <button onclick="myFunction()" class="button"> Toggle Resume </button><br><br>
 
-      <div class="borderText">
-        I don't know what's the matter with people: they don't learn by understanding; they learn by some other way -
-        by rote, or something. Their knowledge is so fragile!
-      </div>
-
-    </div>
-    <div class="column right">
-      <h2>Column 2</h2>
-      <p>Some text..</p>
-    </div>
+  <div id="myResume">
+    <!-- <embed class="hide" id="resume-pic" src="./images/GRAD Resume.pdf" width="1000" height="600" type='application/pdf'> -->
+    <embed width="1000" height="600" src="./images/GRAD Resume.pdf#toolbar=0&navpanes=0" type='application/pdf'>
   </div>
 
-  <br><br>
-
-
 </div>  <!--_____ THIS IS THE END OF THE PAGE CONTENT _____-->
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myResume");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
 
 </body>
 </html>

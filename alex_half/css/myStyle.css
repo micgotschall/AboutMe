@@ -1,283 +1,159 @@
-body {
- /* Margin bottom by footer height */
- background-color: white;
- /*background-image: url( http://cdn.designrshub.com/wp-content/uploads/2012/08/16_lined_paper_texture.jpg );*/
- /* background-image: url( "../whitePattern.png" ); */
- margin-bottom: 60px;
- background-size:100%;
- background-repeat:repeat-y;
- /* Prevents you from seeing x scroll bars */
- overflow-x:hidden;
-}
-
-h1 {
-
-}
-h2{
-
-}
-p{
-
-}
-
-.blue {
-  color: blue;
-  background-color: orange;
-  font-family: 'Special Elite';
-  font-size: 16pt;  /* '1em' is the recommended relative size' */
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  border: 1px solid #000;
-  padding: 10px;
-}
-
-.borderText{  /* content > padding > border > margin */
-  background-color: #B26FFF;
-  /* Padding */
-  padding: 10px;
-  padding-left: 20px;
-  /* Border */
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  /* Margin */
-  margin: 10px;
-  margin-top: 50px;
-}
-
-/* Button Code */
-/*
-.button{
-  background: #e7e7e7;
-  border: 1px solid;
-  border-radius: 3px;
-  font: 700 13px Helvetica,Arial;
-  height: 30px;
-  line-height: 28px;  /* Centers text, close to height
-  padding: 0 20px;  /* 0px top & bottom, 20px right & left
-  text-align: center;
-  margin-right: 10px;
-  box-sizing: border-box;
-}
-ul{
-  padding: 0;
-  list-style-type: none;
-}
-li{
-  display: inline;
-}
-a{ /* what the button looks like
-  color: #666;
-  text-decoration: none; /* Removes default underline
-  float: left;
-}
-a:hover{ /* on hover
-  color: #000;
-  background-color: #dadada;
-}*/
-
-/* This section is for the navigation bar at the very top of the page */
+/* NAVIGATION BAR */
 #nav {
-/*  background-image: url(https://ironcatscattery.com/websiteimage/Szalagok/Szalagok%200076.png); */
-/*  background-image: url('../images/spaceBanner.jpg'); */
-  min-width:580px;
-  max-width:580px;
-  background-color: black;
-  height: 40px;
-  font-size: 25px;
-  font-weight: bold;
-  font: Tahoma;
-  /* margin-left: 120px; */
-}
-#nav ul { /* this undoes the default stuff */
-  display: inline-block;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  text-align: center;
-}
-#nav li{ /* li and ul tags used for ordered lists */
-  display: inline;
-  padding: 15px; /*  */
-  vertical-align: middle;
-}
-#nav a{ /* for links */
-  text-decoration: none;
-  padding: 8px 8px 8px 8px;
-  color: white; /* font color */
-  vertical-align: middle;
-}
-#nav a:hover{ /* for links while hovering */
-  color: black;
-  background: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* padding-left: 11em; */
+    /* padding-right: 20em; */
+    font-family: 'Cinzel', serif;
 }
 
-.imagetop { /* made by me, hopefully works better */
-  float: left;  /* Allows text to sort of hug the image */
-  margin-right: 10px;
+#nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+
+    padding-left: 5em;
+    /* padding-right: 15em; */
+    /* display: inline-block; CUTS IT OFF */
+    min-width: 1100px;
 }
 
-.pagetop{
-  min-width:1000px;
-  padding: 0px;
-  background-color: #ffffff;
-  border-color: black;
-  border-width: 5px;
-  border-style: solid;
-  background-image: url( "../images/tile.png" );
+#nav li {
+    float: left;
 }
 
-.myname {
-  font-size: 25pt;
-  padding: 20px;
-  padding-left: 110px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-weight: bold;
-  font-family: "Trebuchet MS", Times, serif,oblique;
+#nav li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
-/* Automatically adds a little border to added images */
-.imagec {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 3px;
-  background-color: silver;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  /* float: left;  Allows text to sort of hug the image */
-  /* margin-right: 10px; */
+#nav li b {  /* governs the ADN part */
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    padding-left: 90px;
+    padding-right: 90px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-text-stroke: 1px gold;
+
+    font-family: 'Press Start 2P'; /* Pixelated */
+}
+
+#nav li a:hover:not(.active) {
+    /* background-color: #222; */
+    color: #BA55D3;
+}
+
+#nav .active {
+    background-color: black;
+    color: gold;
+
+    outline-style: double;
+    outline-color: gold;
+}
+/* NAVIGATION BAR */
+
+/* LINKS */
+/* unvisited link */
+a:link {
+    color: gold;
+}
+/* visited link */
+a:visited {
+    color: silver;
+}
+/* mouse over link */
+a:hover {
+    color: red;
+}
+/* selected link */
+a:active {
+    color: gold;
+}
+/* LINKS */
+
+
+
+body {
+ background: url("../images/marbledGold1.jpg") repeat;
+
+ /* padding-left: 11em; */
+ /* padding-right: 20em; */
+ /* font-family: */
+ /* Georgia, "Times New Roman", */
+ /* Times, serif; */
+ /* color: red; */
+ color: white;
 }
 
 .pagemid{
-  min-width:1000px;
-  padding: 5px;
-  background-color: #ffffff;
-  border-color: black;
-  border-width: 5px;
-  border-style: solid;
+  /* background: url( "./images/goldGildedRedBackground.jpg" ); */
+  background: black;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  /* padding-top: 1px; */
+
+  margin-right: 9em;
+  margin-left: 7em;
+
+  outline-style: inset;
+  outline-color: gold;
+
+  min-width: 1000px;
+  max-width: 1000px;
 }
 
-/* These psudo-classes determine how links change color */
-/*
-a:link {
-  color: blue;
-}
-a:visited{
-  color: grey;
-}
-a:hover{
-  color: orange;
-}*/
-
-/* Everything past here was copied from stackExchange */
-.container {
-    width: 500px;
-    max-height: 500px;
-    margin: 10px;
-    border: 1px solid #fff;
-    background-color: #ffffff;
-    box-shadow: 0px 2px 7px #292929;
-    -moz-box-shadow: 0px 2px 7px #292929;
-    -webkit-box-shadow: 0px 2px 7px #292929;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-}
-.mainbody, .header, .footer {
-    padding: 5px;
-}
-.mainbody {
-    margin-top: 0;
-    min-height: 150px;
-    max-height: 300px;
-    overflow: auto;
-}
-.header {
-    height: 40px;
-    border-bottom: 1px solid #EEE;
-    background-color: whiteSmoke;
-    height: 40px;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    font-size: 25px;
-}
-.footer {
-    height: 40px;
-    background-color: whiteSmoke;
-    border-top: 1px solid #DDD;
-    -webkit-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  font-size: 25px;
+h2{
+  padding-top: 1em;
+  -webkit-text-stroke: 1px grey;
+  font-family: 'Press Start 2P'; /* Pixelated */
 }
 
-/*This section is for collapsable stuff, Doesn't look great though*/
-summary::-webkit-details-marker {
- color: #00ACF3;
- font-size: 125%;
- margin-right: 2px;
-}
-summary:focus {
-	outline-style: none;
-}
-article > details > summary {
-	font-size: 28px;
-	margin-top: 16px;
-}
-details > p {
-	margin-left: 24px;
-}
-details details {
-	margin-left: 36px;
-}
-details details summary {
-	font-size: 16px;
+p{
+  font-family: 'Kanit', sans-serif; /* Looks like code */
+  font-family: 'Cinzel', serif; /* Fantasy like */
+  font-family: 'Hind Vadodara', sans-serif; /* Most Normal */
+
 }
 
-canvas{
-    border: 5px solid black;
+/* BUTTON STUFF */
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  color: black;
+  background-color: #4CAF50;
+  background-color: #e6b800;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #666;
 }
 
-/* THIS CODE CHUNK CREATES THE UNBALANCED COLUMNS THAT MAKE UP THE PAGE */
-* {
-    box-sizing: border-box;
+.button:hover {
+  /* background-color: #3e8e41 */
+  background-color: #e6b800;
 }
-/* Create two unequal columns that floats next to each other */
-.column {
-    float: left;
-    padding: 10px;
-    /* height: 300px; /* Should be removed. Only for demonstration */ */
-    border-top-style: solid;
+
+.button:active {
+  background-color: #b38f00;
+  box-shadow: 0 5px #444;
+  transform: translateY(4px);
 }
-.left {
-  width: 85%;
-  background-color: white;
-  border-bottom-style: solid;
-}
-.right {
-  width: 15%;
-  background-color: whiteSmoke;
-  border-left-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-}
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-/* THIS CODE CHUNK CREATES THE UNBALANCED COLUMNS THAT MAKE UP THE PAGE */
+/* BUTTON STUFF */
